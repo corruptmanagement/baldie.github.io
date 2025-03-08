@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Books</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="infohead">
+    <h2>Property Books</h2>
+    <nav>
+        <ul>
+          <li><a href="product.html">Home</a></li>
+          <li><a href="properties.html">Property</a></li>
+          <li><a href="book.html">Bookings</a></li>
+          <li><a href="invoice.html">Check-Out</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+  <section class="book">
+    <div class="container">
+      <h2>Property Booking Form</h2>
+      <form>
+          <div class="form-container">
+              <div class="column">
+                  <label for="firstName">First Name:</label>
+                  <input type="text" id="firstName" name="firstName" placeholder="First Name"  required>
+
+                  <label for="lastName">Last Name:</label>
+                  <input type="text" id="lastName" name="lastName" placeholder="Last Name"  required>
+
+                  <label for="address1">Address 1:</label>
+                  <input type="text" id="address1" name="address1" placeholder="Home Address"  required>
+
+                  <label for="address2">Address 2:</label>
+                  <input type="text" id="address2" name="address2" placeholder="example@example.com">
+                
+                  <label for="city">City:</label>
+                  <input type="text" id="city" name="city" placeholder="City"  required>
+
+                  <label for="country">Country:</label>
+                  <input type="text" id="country" name="country" placeholder="Country"  required>
+
+                  <label for="phone">Phone Number:</label>
+                  <input type="tel" id="phone" name="phone" placeholder="Number"  required>
+
+                  <label for="email">Email:</label>
+                  <input type="email" id="email" name="email" placeholder="example@example.com" required>
+              </div>
+
+              <div class="column">
+                  <label for="event">Type of Event:</label>
+                  <select id="event" name="event">
+                    <option value="wedding">Wedding</option>
+                    <option value="birthday">Birthday</option>
+                    <option value="other">Other</option>
+                </select>
+
+                  <label for="property">Property:</label>
+                  <select id="property" name="property">
+                      <option value="Miami Property">Beach in Miami</option>
+                      <option value="Cabin Property">Cabin</option>
+                      <option value="Castaway Property">Castaway</option>
+                      <option value="Bali Property">Ciff in Bali</option>
+                      <option value="confernce">Pegasus Hotel Conference Room</option>
+                  </select>
+
+                  <label for="checkIn">Check-in Date:</label>
+                  <input type="date" id="checkIn" name="checkIn" required>
+
+                  <label for="checkIntime">Check-in Time:</label>
+                  <input type="time" id="checkIntime" name="checkIntime" required>
+
+                  <label for="checkOut">Check-out Date:</label>
+                  <input type="date" id="checkOut" name="checkOut" required>
+
+                  <label for="checkOuttime">Check-Out Time:</label>
+                  <input type="time" id="checkOuttime" name="checkOuttime" required>
+
+                  <label for="message">Special Instruction:</label>
+                  <input type="text" id="message" name="message" placeholder="message">
+              </div>
+          </div>
+
+          <div class="buttons">
+              <button onclick="alert('Form Submitted')" type="submit" class="submit-btn">Submit</button>
+              <button onclick="alert('Form Canceled')" type="reset" class="cancel-btn">Cancel</button>
+              <button type="button" class="exit-btn" onclick="alert('Leaving Site'), window.close();">Exit</button>
+          </div>
+      </form>
+  </div>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

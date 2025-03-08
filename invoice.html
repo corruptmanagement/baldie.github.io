@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="infohead">
+        <h2>Check-Out</h2>
+          <nav>
+              <ul>
+                <li><a href="product.html">Home</a></li>
+                <li><a href="properties.html">Property</a></li>
+                <li><a href="book.html">Bookings</a></li>
+                <li><a href="invoice.html">Check-Out</a></li>
+                <li><a href="about.html">About Us</a></li>
+              </ul>
+          </nav>
+    </header>
+    <main>
+        <section class="invoice">
+            <h3>Booking Invoice</h3>
+            <table border="1">
+                <tr><th>Detail</th><th>Information</th></tr>
+                <tr><td>First Name</td><td id="firstName"></td></tr>
+                <tr><td>Last Name</td><td id="lastName"></td></tr>
+                <tr><td>Email</td><td id="email"></td></tr>
+                <tr><td>Phone</td><td id="phone"></td></tr>
+                <tr><td>Property</td><td id="property"></td></tr>
+                <tr><td>Check-in</td><td id="checkIn"></td></tr>
+                <tr><td>Check-out</td><td id="checkOut"></td></tr>
+                <tr><td>Event Type</td><td id="event"></td></tr>
+                <tr><td>Price per Night</td><td id="price"></td></tr>
+                <tr><td>Number of Nights</td><td id="nights"></td></tr>
+                <tr><td>Subtotal</td><td id="subtotal"></td></tr>
+                <tr><td>Tax (10%)</td><td id="tax"></td></tr>
+                <tr><td>Total</td><td id="total"></td></tr>
+            </table>
+            <button class="check">Check-Out</button>
+        </section>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+    const formData = JSON.parse(localStorage.getItem("bookingForm"));
+
+    if (!formData) {
+        alert("No booking data found!");
+        return;
+    }
+
+    // Define property prices per night
+    const propertyPrices = {
+        miamiBeach: 15000,
+        cabin: 25000,
+        castaway: 20000,
+        bali: 30000,
+        confernce: 15000
+    };
+
+    // Fill the table with saved form data
+    document.getElementById("firstName").textContent = formData.firstName;
+    document.getElementById("lastName").textContent = formData.lastName;
+    document.getElementById("email").textContent = formData.email;
+    document.getElementById("phone").textContent = formData.phone;
+    document.getElementById("property").textContent = formData.property;
+    document.getElementById("checkIn").textContent = formData.checkIn;
+    document.getElementById("checkOut").textContent = formData.checkOut;
+    document.getElementById("event").textContent = formData.event;
+
+    // Calculate number of nights
+    const checkInDate = new Date(formData.checkIn);
+    const checkOutDate = new Date(formData.checkOut);
+    const nights = Math.max(1, Math.round((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24)));
+
+    // Get price per night
+    const pricePerNight = propertyPrices[formData.property] || 0;
+    const subtotal = pricePerNight * nights;
+    const tax = subtotal * 0.1; // 10% tax
+    const total = subtotal + tax;
+
+    // Display calculations
+    document.getElementById("price").textContent = `$${pricePerNight.toFixed(2)}`;
+    document.getElementById("nights").textContent = nights;
+    document.getElementById("subtotal").textContent = `$${subtotal.toFixed(2)}`;
+    document.getElementById("tax").textContent = `$${tax.toFixed(2)}`;
+    document.getElementById("total").textContent = `$${total.toFixed(2)}`;
+});
+
+form.addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevents actual form submission
+    saveFormData();
+    window.location.href = "invoice.html"; // Redirect to invoice page
+});
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 class="Log">Log In</h1>
+    <section>
+        <div class="logContainer">
+          <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Your Name <span class="required">*</span></label><br>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email <span class="required">*</span></label><br>
+                <input type="email" id="email" name="email" placeholder="example@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="number">Number <span class="required">*</span></label><br>
+                <input type="tel" id="number" name="number" placeholder="Number" required>
+            </div>
+            <button id="myButton" type="submit">Send Message</button>
+        </form>
+        </div>
+      </section>
+    <h2>Submitted Data:</h2>
+    <div id="output"></div>
+    <button onclick="viewStoredData()">View Stored Data</button>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get input values (excluding file inputs)
+            let formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                subject: document.getElementById('number').value,
+            };
+
+            // Display data on the same page
+            let outputDiv = document.getElementById('output');
+            outputDiv.innerHTML = `<p><strong>Name:</strong> ${formData.name}</p>
+                                   <p><strong>Email:</strong> ${formData.email}</p>
+                                   <p><strong>Number:</strong> ${formData.number}</p>`;
+
+            // Store data in localStorage
+            localStorage.setItem('contactFormData', JSON.stringify(formData));
+        });
+
+        function viewStoredData() {
+            window.location.href = "storage.html";
+        }
+
+
+       document.getElementById("myButton").addEventListener("click", function() {
+        window.location.href = "product.html";
+       });
+    </script>
+</body>
+</html>

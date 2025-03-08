@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stored Contact Data</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .container { max-width: 600px; margin: auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; }
+        h1 { text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Stored Contact Data</h1>
+        <div id="storedData"></div>
+        <button onclick="clearData()">Clear Data</button>
+        <button onclick="goBack()">Go Back</button>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let storedData = localStorage.getItem('contactFormData');
+
+            if (storedData) {
+                let data = JSON.parse(storedData);
+                document.getElementById('storedData').innerHTML = `<p><strong>Name:</strong> ${data.name}</p>
+                                                                   <p><strong>Email:</strong> ${data.email}</p>
+                                                                   <p><strong>Number:</strong> ${data.number}</p>`;
+            } else {
+                document.getElementById('storedData').innerHTML = "<p>No data found.</p>";
+            }
+        });
+
+        function clearData() {
+            localStorage.removeItem('contactFormData');
+            document.getElementById('storedData').innerHTML = "<p>Data cleared.</p>";
+        }
+
+        function goBack() {
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>
