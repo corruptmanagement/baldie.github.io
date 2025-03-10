@@ -9,7 +9,6 @@
     flex-direction: column;
   }
 }
-
 body{
   position: relative;
   font-family:'Times New Roman', sans-serif; 
@@ -153,6 +152,9 @@ nav a:hover::after {
 }
 .container{
   align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 div{
   font-size: larger;
